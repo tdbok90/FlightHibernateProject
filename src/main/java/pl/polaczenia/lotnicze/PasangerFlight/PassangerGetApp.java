@@ -1,20 +1,20 @@
-package pl.polaczenia.lotnicze.AirPlanePassanger;
+package pl.polaczenia.lotnicze.PasangerFlight;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-import pl.polaczenia.lotnicze.entity.AirPlane;
+import pl.polaczenia.lotnicze.entity.Flight;
 import pl.polaczenia.lotnicze.entity.Passenger;
 
-public class PassangerHqlApp {
+import javax.persistence.Query;
+public class PassangerGetApp {
     public static void main(String[] args) {
         // stworzenie obiektu Configuration
         Configuration conf = new Configuration();
         // wczytanie pliku konfiguracyjnego
         conf.configure("hibernate.cfg.xml");
         // wczytanie adnotacji
-        conf.addAnnotatedClass(AirPlane.class);
+        conf.addAnnotatedClass(Flight.class);
         conf.addAnnotatedClass(Passenger.class);
         // stworzenie obiektu SessionFactory
         SessionFactory factory = conf.buildSessionFactory();
@@ -22,26 +22,20 @@ public class PassangerHqlApp {
         Session session = factory.getCurrentSession();
         // stworzenie obiektu
 
-        String getPlane = "SELECT a FROM AirPlane a WHERE a.model LIKE '195'";
+        String flight = "SELECT f FROM Flight f WHERE f.departureDateFly='2019-07-03'";
 
 
         // rozpoczęcie transakcji
         session.beginTransaction();
 
-        Query query = session.createQuery(getPlane);
-//        AirPlane airPlane = (AirPlane) query.getSingleResult();
-//
-//        for (Passenger passenger: airPlane.getPassengers()) {
-//            if(passenger.getId().equals(13)){
-//                session.delete(passenger);
-//            }
-//        }
+        Query query = session.createQuery(flight);
 
-        int passangerToDeleted = 12;
+        Flight resultList = (Flight) query.getSingleResult();
 
-        Passenger passenger = session.get(Passenger.class,passangerToDeleted);
+        for (Passenger passanger: resultList.getPassengers()) {
+            System.out.println(passanger);
+        }
 
-        session.delete(passenger);
 
         // zakończenie transakcji
         session.getTransaction().commit();

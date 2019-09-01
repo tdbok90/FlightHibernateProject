@@ -24,26 +24,29 @@ public class PassangerDeleteApp {
         Session session = factory.getCurrentSession();
         // stworzenie obiektu
 
-        String flight = "SELECT f FROM Flight f WHERE f.departureDateFly='2019-07-03'";
+        int idPassanger = 15;
 
+        String allPasanger = "SELECT f FROM Flight f WHERE f.id=8";
 
         // rozpoczęcie transakcji
         session.beginTransaction();
 
-        Query query = session.createQuery(flight);
+        Query query = session.createQuery(allPasanger);
 
-        Flight dailyFlight = (Flight) query.getSingleResult();
+        Flight flight = (Flight) query.getSingleResult();
 
-        System.out.println(dailyFlight);
 
-        Passenger janusz = Passenger.builder().firstName("Janusz").lastName("Biedrona").personalIdentityNumber(new BigInteger("50040823452")).build();
-        Passenger karina = Passenger.builder().firstName("Karina").lastName("Biedrona").personalIdentityNumber(new BigInteger("88011278643")).build();
+        for (Passenger passenger: flight.getPassengers()) {
+            if(passenger.getId().equals(19)){
+                session.delete(passenger);
+            }
+        }
 
-        dailyFlight.addPassenger(janusz);
-        dailyFlight.addPassenger(karina);
+        // Jedna metoda na usunięcia obiektu passanger
+//        Passenger passengerToDelete= session.get(Passenger.class,idPassanger);
+//        session.remove(passengerToDelete);
 
-        session.persist(janusz);
-        session.persist(karina);
+
 
         // zakończenie transakcji
         session.getTransaction().commit();

@@ -39,7 +39,7 @@ public class Flight {
 
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "flight",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Passenger> passengers;
 
     public void addPassenger(Passenger passenger){
