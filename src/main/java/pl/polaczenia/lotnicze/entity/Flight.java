@@ -42,6 +42,11 @@ public class Flight {
     @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Passenger> passengers;
 
+    @OneToOne
+    @JoinColumn(name = "id_airplane")
+    private AirPlane airPlane;
+
+
     public void addPassenger(Passenger passenger){
         if(passengers==null){
             passengers = new ArrayList<>();

@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
+@ToString
 @Entity
 @Table(name = "airplane")
 public class AirPlane{
@@ -24,6 +25,8 @@ public class AirPlane{
     private String brand;
     @Column(name = "model")
     private String model;
+
+
 
 
 

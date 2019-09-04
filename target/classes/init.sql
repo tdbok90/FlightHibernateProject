@@ -33,12 +33,11 @@ CREATE TABLE `aiport`.`aiport`
 
 CREATE TABLE `airplane`
 (
-    `id_airplane` INT         NOT NULL AUTO_INCREMENT,
+    `id_airplane` INT  NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     `brand`       VARCHAR(45) NULL,
     `model`       VARCHAR(45) NULL,
-    id_flight int not null,
-    PRIMARY KEY (`id_airplane`),
-    CONSTRAINT FK_FLIGHT FOREIGN KEY (id_flight) REFERENCES  flight (id_flight)
+    id_flight int not null ,
+    CONSTRAINT FK_FLIGHT_AIRPLANE foreign key (id_flight) references flight(id_flight)
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4;
 
 create table passanger

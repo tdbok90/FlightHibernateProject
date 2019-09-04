@@ -929,80 +929,120 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="235" parent="2" name="flight">
+    <table id="235" parent="2" name="airplane">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <table id="236" parent="2" name="passanger">
+    <table id="236" parent="2" name="flight">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <column id="237" parent="235" name="id_flight">
+    <table id="237" parent="2" name="passanger">
+      <Collation>utf8mb4_general_ci</Collation>
+    </table>
+    <column id="238" parent="235" name="id_airplane">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="235" name="departure_flight">
+    <column id="239" parent="235" name="brand">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="240" parent="235" name="model">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="241" parent="235" name="id_flight">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="242" parent="235" name="FK_FLIGHT_AIRPLANE">
+      <ColNames>id_flight</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="243" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_airplane</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="244" parent="235" name="FK_FLIGHT_AIRPLANE">
+      <ColNames>id_flight</ColNames>
+      <RefTableName>flight</RefTableName>
+      <RefColNames>id_flight</RefColNames>
+    </foreign-key>
+    <column id="245" parent="236" name="id_flight">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="236" name="departure_flight">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="235" name="destination_flight">
+    <column id="247" parent="236" name="destination_flight">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="235" name="flight_status">
+    <column id="248" parent="236" name="flight_status">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="241" parent="235" name="PRIMARY">
+    <key id="249" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_flight</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="242" parent="236" name="id_passanger">
+    <column id="250" parent="237" name="id_passanger">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="236" name="first_name">
+    <column id="251" parent="237" name="first_name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="236" name="last_name">
+    <column id="252" parent="237" name="last_name">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="236" name="pesel">
+    <column id="253" parent="237" name="pesel">
       <Position>4</Position>
       <DataType>bigint(12)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="236" name="id_flight">
+    <column id="254" parent="237" name="id_flight">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="247" parent="236" name="FK_FLIGHT">
+    <index id="255" parent="237" name="FK_FLIGHT">
       <ColNames>id_flight</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="248" parent="236" name="PRIMARY">
+    <key id="256" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_passanger</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="249" parent="236" name="FK_FLIGHT">
+    <foreign-key id="257" parent="237" name="FK_FLIGHT">
       <ColNames>id_flight</ColNames>
       <RefTableName>flight</RefTableName>
       <RefColNames>id_flight</RefColNames>
